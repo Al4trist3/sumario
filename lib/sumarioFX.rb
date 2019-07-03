@@ -2,10 +2,14 @@ require 'jrubyfx'
 require 'date'
 require_relative 'sumario'
 require_relative 'cargadorCSV'
+require_relative 'constantes'
 require_relative 'contexto'
 java_import java.time.LocalDate
 java_import javafx.collections.FXCollections
-fxml_root File.expand_path('data', '../')
+
+
+fxml_root(Constantes::PATH_DATA, Constantes::JAR_PATH_DATA)
+
 
 class SumarioFX < JRubyFX::Application
 	def start(stage)
@@ -75,12 +79,12 @@ class DiligenciasFXControlador
       @sumario_pdf = Sumario.new({})
       
       coleccion_personal_fx = FXCollections.observableArrayList(personal.to_java)
-      @box_instructor_constancia.set_items(coleccion_personal_fx)
-      @box_secretario_constancia.set_items(coleccion_personal_fx)
-      @box_instructor_f8.set_items(coleccion_personal_fx)
-      @box_secretario_f8.set_items(coleccion_personal_fx)
+      #@box_instructor_constancia.set_items(coleccion_personal_fx)
+      #@box_secretario_constancia.set_items(coleccion_personal_fx)
+      #@box_instructor_f8.set_items(coleccion_personal_fx)
+      #@box_secretario_f8.set_items(coleccion_personal_fx)
       @box_declarante_f8.set_items(coleccion_personal_fx)
-      
+      @box_declarante_f8.set_value(coleccion_personal_fx.first)
       @fecha_constancia.set_value LocalDate.now
       @fecha_f8.set_value LocalDate.now
   end
@@ -96,11 +100,11 @@ class DiligenciasFXControlador
   def generar_constancia
       
       contexto = {
-          secretario: @box_secretario_constancia.value,
+          secretario: @box_declarante_f8.value,
           fecha: fecha_java_a_ruby(@fecha_constancia.value),
           titulo: @titulo_constancia.text,
           texto: @campo_texto_constancia.text,
-          instructor: @box_instructor_constancia.value
+          instructor: @box_declarante_f8.value
             }
       sumario_pdf.generar_constancia(Contexto.new(contexto))
   end
@@ -108,11 +112,11 @@ class DiligenciasFXControlador
   
   def generar_f8
       contexto = {
-          secretario: @box_secretario_f8.value,
+          secretario: @box_declarante_f8.value,
           declarante: @box_declarante_f8.value,
           fecha: fecha_java_a_ruby(@fecha_f8.value),
           texto: @campo_texto_f8.text,
-          instructor: @box_instructor_f8.value
+          instructor: @box_declarante_f8.value
             }
       sumario_pdf.generar_f8(Contexto.new(contexto))
   end

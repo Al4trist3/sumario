@@ -24,9 +24,16 @@ module Constantes
     LEGAL = [612, 1008]
     Ancho_Pagina = LEGAL[0] - (Margenes_Policiales[:right_margin] + Margenes_Policiales[:left_margin])
     Alto_Pagina = LEGAL[1] - (Margenes_Policiales[:top_margin] + Margenes_Policiales[:bottom_margin])
+    
     Origen = [Margenes_Policiales[:left_margin], LEGAL[1] - Margenes_Policiales[:top_margin]]
     Origen_Reverso = [Margenes_Policiales[:right_margin], LEGAL[1] - Margenes_Policiales[:top_margin]]
     Origen_Reverso_Foja_Siguiente = [Margenes_Policiales[:right_margin], LEGAL[1]/2]
+    
     DIM_MEDALLA = [102,153]
+    DIM_FOLIADOR = [50,50]
+
+
+    PATH_DATA = File.expand_path('../data', __dir__) + '/'
+    JAR_PATH_DATA = 'sumarios/data/'
     
 end

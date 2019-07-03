@@ -132,7 +132,7 @@ class Sumario
 
     def generar_vista_fotografica(imagen, titulo)
 
-      generar_foliador([550,970], [50,50])
+      generar_foliador([550,970], DIM_FOLIADOR)
 
       sumario_pdf.bounding_box(Origen, :width => Ancho_Pagina , :height => Alto_Pagina) do
 
@@ -186,20 +186,21 @@ class Sumario
     
     def generar_medalla(origen, tamanio)
     
-        sumario_pdf.image('/home/alatriste/programacion/ruby/sumarios/data/medalla.png', :at => origen, :fit => tamanio)
+        sumario_pdf.image(PATH_DATA + 'medalla.png', :at => origen, :fit => tamanio)
     
     end
     
     def generar_foliador(origen, tamanio)
         
-        sumario_pdf.image('/home/alatriste/programacion/ruby/sumarios/data/folio.png', :at => origen, :fit => tamanio)
+        sumario_pdf.image(PATH_DATA + 'folio.png', :at => origen, :fit => tamanio)
         
     end
     
     def generar_medalla_foliador
         
-        generar_foliador([550,970], [50,50])
-        generar_medalla([10,930], DIM_MEDALLA)
+      generar_foliador([550,970], DIM_FOLIADOR)
+                        
+      generar_medalla([10,930], DIM_MEDALLA)
         
     end
     
