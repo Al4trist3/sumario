@@ -17,7 +17,7 @@ class CargadorCSV
     def crear_sumarios_desde_csv
         
         sumarios = []
-        CSV.foreach(archivo_sumarios) do |fila|
+        CSV.foreach(archivo_sumarios, :col_sep => ';') do |fila|
             sumarios << subir_fila_sumario(fila)
         end
         
@@ -49,7 +49,7 @@ class CargadorCSV
     def crear_personal_desde_csv
         
         personal = []
-        CSV.foreach(archivo_personal) do |fila|
+        CSV.foreach(archivo_personal, :col_sep => ';') do |fila|
             personal << subir_fila_personal(fila)
         end
         

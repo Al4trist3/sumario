@@ -67,8 +67,9 @@ sumario = {causa: Causa.new(causa)}
 
 
 s_pdf = Sumario.new({})
-#s_pdf.generar_constancia(Contexto.new(contexto2))
-s_pdf.generar_vista_fotografica('/home/alatriste/Pictures/f26.jpg', 'LA PRESENTE FOJA LLEVA VISTA FOTOGRAFICA DEL WALLPAPER')
-s_pdf.guardar_sumario('/home/alatriste/programacion/ruby/sumarios/prueba.pdf')
+s_pdf.generar_constancia(Contexto.new(contexto2))
+#s_pdf.generar_vista_fotografica('/home/alatriste/Pictures/f26.jpg', 'LA PRESENTE FOJA LLEVA VISTA FOTOGRAFICA DEL WALLPAPER')
+s_pdf.generar_documento_externo('/home/alatriste/Documents/pruebasumarios/mozilla.pdf')
+s_pdf.guardar_sumario('/home/alatriste/Documents/pruebasumarios/prueba.pdf')
         
         

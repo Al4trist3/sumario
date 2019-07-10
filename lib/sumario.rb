@@ -3,12 +3,13 @@ require 'date'
 require_relative 'causa'
 require_relative 'diligencia'
 require_relative 'constantes'
+require_relative 'documento'
 
 class Sumario
     
     include Constantes
     
-    attr_reader :sumario_pdf, :fecha_inicio, :identacion, :dependencia, :manejador_const, :manejador_f8
+    attr_reader :sumario_pdf, :fecha_inicio, :identacion, :dependencia, :manejador_const, :manejador_f8, :manejador_documento_ext
     attr_accessor :contexto, :causa
     
     def initialize(args)
@@ -19,6 +20,7 @@ class Sumario
         sumario_pdf.font(args[:fuente], size: args[:tamanio])
         @manejador_const = Constancia.new(self)
         @manejador_f8 = F8.new(self)
+        @manejador_documento_ext = Documento.new(self)
     end
     
     def valores_por_defecto
@@ -37,19 +39,26 @@ class Sumario
     def generar_caratula(contexto_nuevo)
         
     end
+
     
     def generar_f8(contexto_nuevo)
         
         @contexto = contexto_nuevo        
-        manejador_f8.calcular_carillas_cuerpo.each { |c| self.send(c[0], c[1])}
+        manejador_f8.generar_carillas_cuerpo
         
     end
     
     def generar_constancia(contexto_nuevo)
         
         @contexto = contexto_nuevo        
-        manejador_const.calcular_carillas_cuerpo.each { |c| self.send(c[0], c[1])}
+        manejador_const.generar_carillas_cuerpo
         
+    end
+
+    def generar_documento_externo(pdf_path)
+
+      manejador_documento_ext.generar_paginas_documento(pdf_path)
+
     end
     
     
@@ -129,6 +138,29 @@ class Sumario
         end
         
     end
+
+    def generar_pagina_documento_externo(imagen)
+
+
+      sumario_pdf.image(imagen, :fit => LEGAL)
+
+      generar_foliador([550,970], DIM_FOLIADOR)
+      
+      sumario_pdf.start_new_page
+
+      sumario_pdf.move_down LEGAL[1]/2
+
+      generar_queda_agregado([(LEGAL[0]/2) - DIM_MEDALLA[0]/2, sumario_pdf.cursor + DIM_MEDALLA[1]/2])
+
+      sumario_pdf.start_new_page
+
+    end
+
+
+
+
+
+
 
     def generar_vista_fotografica(imagen, titulo)
 

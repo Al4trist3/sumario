@@ -9,62 +9,80 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="638.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane fx:id="panel_diligencias" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="638.0" style="-fx-background-color: #2f4f4f; -fx-border-color: #32465c;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
-    <Tab text="CONSTANCIA">
+    <Tab style="-fx-background-color: #4d9b9b;" text="CONSTANCIA">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TextArea fx:id="campo_texto_constancia" layoutX="31.0" layoutY="114.0" prefHeight="361.0" prefWidth="577.0" wrapText="true" />
                   <DatePicker fx:id="fecha_constancia" editable="false" layoutX="399.0" layoutY="22.0" />
                   <Label layoutX="446.0" layoutY="6.0" text="Fecha diligencia" />
-                  <Button fx:id="boton_generar_constancia" layoutX="288.0" layoutY="489.0" mnemonicParsing="false" onAction="#generar_constancia" text="Generar" />
+                  <Button fx:id="boton_generar_constancia" layoutX="288.0" layoutY="489.0" mnemonicParsing="false" onAction="#generar_constancia" style="-fx-background-color: #4d9b9b;" text="Generar" />
                   <TextField fx:id="titulo_constancia" layoutX="31.0" layoutY="78.0" prefHeight="26.0" prefWidth="578.0" text="Constancia de la Instruccion" />
                   <Label layoutX="57.0" layoutY="55.0" text="Titulo" />
                </children>
             </AnchorPane>
       </content>
     </Tab>
-    <Tab text="F8">
+    <Tab style="-fx-background-color: #4d9b9b;" text="F8">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TextArea fx:id="campo_texto_f8" layoutX="31.0" layoutY="108.0" prefHeight="361.0" prefWidth="577.0" wrapText="true" />
-                  <DatePicker fx:id="fecha_f8" editable="false" layoutX="410.0" layoutY="23.0" />
+                  <DatePicker fx:id="fecha_f8" editable="false" layoutX="410.0" layoutY="23.0" style="-fx-background-color: #4d9b9b;" />
                   <Label layoutX="426.0" layoutY="6.0" text="Fecha diligencia" />
-                  <ChoiceBox fx:id="box_declarante_f8" layoutX="31.0" layoutY="73.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="box_declarante_f8" layoutX="31.0" layoutY="73.0" prefWidth="150.0" style="-fx-background-color: #4d9b9b;" />
                   <Label layoutX="61.0" layoutY="57.0" text="Declarante" />
-                  <Button fx:id="boton_generar_f8" layoutX="284.0" layoutY="478.0" mnemonicParsing="false" onAction="#generar_f8" text="Generar" />
+                  <Button fx:id="boton_generar_f8" layoutX="284.0" layoutY="478.0" mnemonicParsing="false" onAction="#generar_f8" style="-fx-background-color: #4d9b9b;" text="Generar" />
                </children>
             </AnchorPane>
       </content>
     </Tab>
-      <Tab text="VISTA">
+      <Tab style="-fx-background-color: #4d9b9b;" text="VISTA">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TextArea fx:id="campo_descripcion_vista" layoutX="39.0" layoutY="271.0" prefHeight="89.0" prefWidth="570.0" wrapText="true" />
-                  <Button fx:id="boton_generar_vista" layoutX="288.0" layoutY="489.0" mnemonicParsing="false" onAction="#generar_vista" text="Generar" />
+                  <Button fx:id="boton_generar_vista" layoutX="288.0" layoutY="489.0" mnemonicParsing="false" onAction="#generar_vista" style="-fx-background-color: #4d9b9b;" text="Generar" />
                   <Label layoutX="281.0" layoutY="244.0" text="Descripcion" />
-                  <Button fx:id="boton_seleccionar_imagen" layoutX="103.0" layoutY="67.0" mnemonicParsing="false" onAction="#seleccionar_imagen" text="Seleccionar imagen" />
+                  <Button fx:id="boton_seleccionar_imagen" layoutX="103.0" layoutY="67.0" mnemonicParsing="false" onAction="#seleccionar_imagen" style="-fx-background-color: #4d9b9b;" text="Seleccionar imagen" />
                   <TextField fx:id="campo_seleccionar_imagen" layoutX="33.0" layoutY="106.0" prefHeight="26.0" prefWidth="286.0" />
                   <Label fx:id="etiqueta_seleccionar_imagen" layoutX="324.0" layoutY="111.0" prefHeight="16.0" prefWidth="270.0" />
                </children>
             </AnchorPane>
          </content>
       </Tab>
-      <Tab text="MENU">
+      <Tab style="-fx-background-color: #4d9b9b;" text="DOCUMENTO">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="boton_guardar_diligencias" layoutX="117.0" layoutY="355.0" mnemonicParsing="false" onAction="#guardar_diligencias" text="Guardar" />
-                  <Button fx:id="boton_cancelar_diligencias" layoutX="384.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancelar_diligencias" text="Cancelar" />
+                  <Button fx:id="boton_generar_doc_ext" layoutX="279.0" layoutY="486.0" mnemonicParsing="false" onAction="#generar_doc_ext" style="-fx-background-color: #4d9b9b;" text="Generar" />
+                  <Label layoutX="83.0" layoutY="145.0" prefHeight="145.0" prefWidth="456.0" text="Verificar que el documento PDF haya sido guardado con papel en formato LEGAL" textFill="#6b0707" wrapText="true">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="boton_seleccionar_doc_ext" layoutX="255.0" layoutY="290.0" mnemonicParsing="false" onAction="#seleccionar_doc_ext" style="-fx-background-color: #4d9b9b;" text="Seleccionar PDF" />
+                  <TextField fx:id="campo_seleccionar_doc_ext" layoutX="168.0" layoutY="342.0" prefHeight="26.0" prefWidth="286.0" />
+                  <Label fx:id="etiqueta_seleccionar_doc_ext" layoutX="176.0" layoutY="378.0" prefHeight="16.0" prefWidth="270.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab style="-fx-background-color: #4d9b9b;" text="MENU">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="boton_guardar_diligencias" layoutX="117.0" layoutY="355.0" mnemonicParsing="false" onAction="#guardar_diligencias" style="-fx-background-color: #4d9b9b;" text="Guardar" />
+                  <Button fx:id="boton_cancelar_diligencias" layoutX="384.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancelar_diligencias" style="-fx-background-color: #4d9b9b;" text="Cancelar" />
                   <TextField fx:id="campo_archivo_destino" layoutX="81.0" layoutY="128.0" />
                   <TextField fx:id="campo_nombre_archivo" layoutX="81.0" layoutY="230.0" />
                   <Label fx:id="etiqueta_archivo_destino" layoutX="299.0" layoutY="133.0" prefHeight="16.0" prefWidth="299.0" text="Carpeta destino" />
                   <Label fx:id="etiqueta_nombre_archivo" layoutX="299.0" layoutY="235.0" prefHeight="16.0" prefWidth="326.0" text="Nombre archivo" />
-                  <Button fx:id="boton_seleccionar_destino" layoutX="94.0" layoutY="86.0" mnemonicParsing="false" onAction="#seleccionar_destino" text="Seleccionar destino" />
+                  <Button fx:id="boton_seleccionar_destino" layoutX="94.0" layoutY="86.0" mnemonicParsing="false" onAction="#seleccionar_destino" style="-fx-background-color: #4d9b9b;" text="Seleccionar destino" />
                </children>
             </AnchorPane>
          </content>

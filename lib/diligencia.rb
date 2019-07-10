@@ -1,40 +1,13 @@
 require_relative 'constantes'
+require_relative 'manejador'
 
 class Diligencia
     
     include Constantes
+    include Manejador
 
-    attr_reader :sumario
     
-
-    def initialize(sumario)
-            
-        @sumario = sumario
-            
-    end
-    
-    def sumario_pdf
-        
-        sumario.sumario_pdf
-        
-    end
-    
-    def contexto
-        
-        sumario.contexto
-        
-    end
-        
-        
-
-    def texto_con_formato
-        
-        
-    end
-    
-    
-    
-    def calcular_carillas_cuerpo
+    def generar_carillas_cuerpo
         
         
                
@@ -45,17 +18,17 @@ class Diligencia
         
         final = carillas.size - 1
         
-        carillas.each_with_index.collect {|carilla, i|
-                                          if ((i.even?) && (i == final))
-                                         [:generar_cuerpo_anverso_final, carilla]
-                                         elsif ((i.even?) && !(i == final))
-                                         [:generar_cuerpo_anverso, carilla]
-                                         elsif ((i.odd?) && (i == final))
-                                         [:generar_cuerpo_reverso_final, carilla]
-                                         else #((i.odd) && !(i == final))
-                                         [:generar_cuerpo_reverso, carilla]
-                                         end
-                                         }
+        carillas.each_with_index  {|carilla, i|
+          if ((i.even?) && (i == final))
+            sumario.generar_cuerpo_anverso_final(carilla)
+          elsif ((i.even?) && !(i == final))
+            sumario.generar_cuerpo_anverso(carilla)
+          elsif ((i.odd?) && (i == final))
+            sumario.generar_cuerpo_reverso_final(carilla)
+          else #((i.odd) && !(i == final))
+            sumario.generar_cuerpo_reverso(carilla)
+          end
+        }
         
                         
     end

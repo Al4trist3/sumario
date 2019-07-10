@@ -17,9 +17,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('jrubyfx')
   spec.add_development_dependency('jrubyfx-fxmlloader')
   spec.add_development_dependency('prawn')
+  spec.add_development_dependency('mini_magick')
   spec.add_runtime_dependency('jrubyfx')
   spec.add_runtime_dependency('jrubyfx-fxmlloader')
   spec.add_runtime_dependency('prawn')
+  spec.add_runtime_dependency('mini_magick')
   #spec.add_development_dependency('pdf-core')
   
   #spec.add_development_dependency('prawn-table')

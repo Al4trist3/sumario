@@ -88,6 +88,14 @@ class DiligenciasFXControlador
       @fecha_constancia.set_value LocalDate.now
       @fecha_f8.set_value LocalDate.now
   end
+
+  def deshabilitar
+    @panel_diligencias.set_disable(true)
+  end
+
+  def habilitar
+    @panel_diligencias.set_disable(false)
+  end
   
   def seleccionar_destino
       @campo_archivo_destino.text = SelectorDirectorio.new(stage).seleccionar_archivo
@@ -98,27 +106,35 @@ class DiligenciasFXControlador
   end
   
   def generar_constancia
+
+    deshabilitar
       
-      contexto = {
-          secretario: @box_declarante_f8.value,
-          fecha: fecha_java_a_ruby(@fecha_constancia.value),
-          titulo: @titulo_constancia.text,
-          texto: @campo_texto_constancia.text,
-          instructor: @box_declarante_f8.value
-            }
-      sumario_pdf.generar_constancia(Contexto.new(contexto))
+    contexto = {
+      secretario: @box_declarante_f8.value,
+      fecha: fecha_java_a_ruby(@fecha_constancia.value),
+      titulo: @titulo_constancia.text,
+      texto: @campo_texto_constancia.text,
+      instructor: @box_declarante_f8.value
+      }
+    sumario_pdf.generar_constancia(Contexto.new(contexto))
+
+    habilitar
   end
   
   
   def generar_f8
-      contexto = {
-          secretario: @box_declarante_f8.value,
-          declarante: @box_declarante_f8.value,
-          fecha: fecha_java_a_ruby(@fecha_f8.value),
-          texto: @campo_texto_f8.text,
-          instructor: @box_declarante_f8.value
-            }
-      sumario_pdf.generar_f8(Contexto.new(contexto))
+
+    contexto = {
+      secretario: @box_declarante_f8.value,
+      declarante: @box_declarante_f8.value,
+      fecha: fecha_java_a_ruby(@fecha_f8.value),
+      texto: @campo_texto_f8.text,
+      instructor: @box_declarante_f8.value
+    }
+    deshabilitar
+    sumario_pdf.generar_f8(Contexto.new(contexto))
+    habilitar
+
   end
   
   def guardar_diligencias
@@ -158,15 +174,43 @@ class DiligenciasFXControlador
 
   def generar_vista
 
-      if @campo_seleccionar_imagen.text.empty?
-          @etiqueta_seleccionar_imagen.text = 'CAMPO REQUERIDO - Ubicacion imagen'
-      else
-          @etiqueta_seleccionar_imagen.text = ''
-      end
 
-      unless @campo_seleccionar_imagen.text.empty? 
-        sumario_pdf.generar_vista_fotografica(@campo_seleccionar_imagen.text, @campo_descripcion_vista.text.upcase)
-      end
+    if @campo_seleccionar_imagen.text.empty?
+      @etiqueta_seleccionar_imagen.text = 'CAMPO REQUERIDO - Ubicacion imagen'
+    else
+      @etiqueta_seleccionar_imagen.text = ''
+    end
+
+    unless @campo_seleccionar_imagen.text.empty?
+     deshabilitar
+     sumario_pdf.generar_vista_fotografica(@campo_seleccionar_imagen.text, @campo_descripcion_vista.text.upcase)
+     habilitar
+    end
+
+
+
+  end
+
+  def seleccionar_doc_ext
+
+    @campo_seleccionar_doc_ext.text = SelectorPDF.new(stage).seleccionar_archivo
+
+  end
+
+
+  def generar_doc_ext
+
+    if @campo_seleccionar_doc_ext.text.empty?
+      @etiqueta_seleccionar_doc_ext.text = 'CAMPO REQUERIDO - Ubicacion PDF'
+    else
+       @etiqueta_seleccionar_doc_ext.text = ''
+    end
+
+    unless @campo_seleccionar_doc_ext.text.empty?
+      deshabilitar
+      sumario_pdf.generar_documento_externo(@campo_seleccionar_doc_ext.text)
+      habilitar
+    end
 
   end
 
@@ -217,6 +261,21 @@ class SelectorImagen < SelectorArchivos
     end
 
 end
+
+class SelectorPDF < SelectorArchivos
+
+    def initialize(stage)
+
+      @file_chooser = javafx::stage::FileChooser.new
+      @stage = stage
+      file_chooser.set_title 'Seleccionar documento PDF'
+      filtro = javafx::stage::FileChooser::ExtensionFilter.new('PDF (.pdf)', '*.pdf')
+      file_chooser.get_extension_filters << filtro
+
+    end
+
+end
+
 
 
 class SelectorDirectorio < SelectorArchivos
