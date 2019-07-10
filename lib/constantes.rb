@@ -34,6 +34,6 @@ module Constantes
 
 
     PATH_DATA = File.expand_path('../data', __dir__) + '/'
-    JAR_PATH_DATA = 'sumarios/data/'
+    JAR_PATH_DATA = 'sumario/data/'
     
 end
