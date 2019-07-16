@@ -55,7 +55,7 @@
             </AnchorPane>
          </content>
       </Tab>
-      <Tab style="-fx-background-color: #4d9b9b;" text="DOCUMENTO">
+      <Tab style="-fx-background-color: #4d9b9b;" text="DOC EXT">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -68,6 +68,23 @@
                   <Button fx:id="boton_seleccionar_doc_ext" layoutX="255.0" layoutY="290.0" mnemonicParsing="false" onAction="#seleccionar_doc_ext" style="-fx-background-color: #4d9b9b;" text="Seleccionar PDF" />
                   <TextField fx:id="campo_seleccionar_doc_ext" layoutX="168.0" layoutY="342.0" prefHeight="26.0" prefWidth="286.0" />
                   <Label fx:id="etiqueta_seleccionar_doc_ext" layoutX="176.0" layoutY="378.0" prefHeight="16.0" prefWidth="270.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab style="-fx-background-color: #4d9b9b;" text="DOC INT">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="boton_generar_doc_int" layoutX="279.0" layoutY="486.0" mnemonicParsing="false" onAction="#generar_doc_int" style="-fx-background-color: #4d9b9b;" text="Generar" />
+                  <Label layoutX="83.0" layoutY="145.0" prefHeight="145.0" prefWidth="456.0" text="Verificar que el documento PDF haya sido guardado con papel en formato LEGAL y con margenes policiales" textFill="#6b0707" wrapText="true">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="boton_seleccionar_doc_int" layoutX="255.0" layoutY="290.0" mnemonicParsing="false" onAction="#seleccionar_doc_int" style="-fx-background-color: #4d9b9b;" text="Seleccionar PDF" />
+                  <TextField fx:id="campo_seleccionar_doc_int" layoutX="168.0" layoutY="342.0" prefHeight="26.0" prefWidth="286.0" />
+                  <Label fx:id="etiqueta_seleccionar_doc_int" layoutX="176.0" layoutY="378.0" prefHeight="16.0" prefWidth="270.0" />
                </children>
             </AnchorPane>
          </content>

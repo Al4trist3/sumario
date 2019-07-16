@@ -215,6 +215,30 @@ class DiligenciasFXControlador
   end
 
 
+  def seleccionar_doc_int
+
+    @campo_seleccionar_doc_int.text = SelectorPDF.new(stage).seleccionar_archivo
+
+  end
+
+
+  def generar_doc_int
+
+    if @campo_seleccionar_doc_int.text.empty?
+      @etiqueta_seleccionar_doc_int.text = 'CAMPO REQUERIDO - Ubicacion PDF'
+    else
+       @etiqueta_seleccionar_doc_int.text = ''
+    end
+
+    unless @campo_seleccionar_doc_int.text.empty?
+      deshabilitar
+      sumario_pdf.generar_documento_interno(@campo_seleccionar_doc_int.text)
+      habilitar
+    end
+
+  end
+
+
 end
 
 

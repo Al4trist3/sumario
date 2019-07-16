@@ -9,7 +9,7 @@ class Sumario
     
     include Constantes
     
-    attr_reader :sumario_pdf, :fecha_inicio, :identacion, :dependencia, :manejador_const, :manejador_f8, :manejador_documento_ext
+    attr_reader :sumario_pdf, :fecha_inicio, :identacion, :dependencia, :manejador_const, :manejador_f8, :manejador_documento_ext, :manejador_documento_int
     attr_accessor :contexto, :causa
     
     def initialize(args)
@@ -21,6 +21,7 @@ class Sumario
         @manejador_const = Constancia.new(self)
         @manejador_f8 = F8.new(self)
         @manejador_documento_ext = Documento.new(self)
+        @manejador_documento_int = DocumentoInterno.new(self)
     end
     
     def valores_por_defecto
@@ -57,10 +58,15 @@ class Sumario
 
     def generar_documento_externo(pdf_path)
 
-      manejador_documento_ext.generar_paginas_documento(pdf_path)
+      manejador_documento_ext.generar_documento(pdf_path)
 
     end
-    
+
+    def generar_documento_interno(pdf_path)
+
+      manejador_documento_int.generar_documento(pdf_path)
+
+    end
     
     def generar_cuerpo_anverso(cuerpo)
         
@@ -156,10 +162,37 @@ class Sumario
 
     end
 
+    def generar_pagina_impar_documento_interno(imagen)
 
+      sumario_pdf.image(imagen, :fit => LEGAL)
 
+      generar_medalla_foliador
 
+      sumario_pdf.start_new_page
 
+    end
+
+    def generar_pagina_par_documento_interno(imagen)
+
+      sumario_pdf.image(imagen, :fit => LEGAL)
+
+      generar_queda_agregado_vertical([LEGAL[0] - DIM_MEDALLA_VER[0], LEGAL[1]/2  + DIM_MEDALLA_VER[1]/2])
+
+      sumario_pdf.start_new_page
+
+    end
+
+    def generar_pagina_impar_final_documento_interno(imagen)
+
+      generar_pagina_impar_documento_interno(imagen)
+
+      sumario_pdf.move_down LEGAL[1]/2
+
+      generar_queda_agregado([(LEGAL[0]/2) - DIM_MEDALLA[0]/2, sumario_pdf.cursor + DIM_MEDALLA[1]/2])
+
+      sumario_pdf.start_new_page
+
+    end
 
 
     def generar_vista_fotografica(imagen, titulo)
@@ -208,6 +241,15 @@ class Sumario
 
       generar_medalla(origen, DIM_MEDALLA)
 
+    end
+
+    def generar_queda_agregado_vertical(origen)
+
+        sumario_pdf.draw_text("QUEDA AGREGADO A SUS ANTECEDENTES. CONSTE.", :at => ORIGEN_QA_VER_LEGAL, :style => :bold, :rotate => 90, :rotate_around => :center)
+        
+
+        sumario_pdf.image(PATH_DATA + 'medalla_vertical.png', :at => origen, :fit => DIM_MEDALLA_VER)
+        
     end
             
             

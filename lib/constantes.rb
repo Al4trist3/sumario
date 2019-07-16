@@ -30,7 +30,12 @@ module Constantes
     Origen_Reverso_Foja_Siguiente = [Margenes_Policiales[:right_margin], LEGAL[1]/2]
     
     DIM_MEDALLA = [102,153]
+
+    DIM_MEDALLA_VER = [153,102]
+
     DIM_FOLIADOR = [50,50]
+
+    ORIGEN_QA_VER_LEGAL = [LEGAL[0] - 80 , (LEGAL[1]/2) - 150]
 
 
     PATH_DATA = File.expand_path('../data', __dir__) + '/'
