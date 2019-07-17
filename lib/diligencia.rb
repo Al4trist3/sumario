@@ -16,17 +16,17 @@ class Diligencia
         carillas[0] = titulo_con_formato.concat(carillas[0])
         
         
-        final = carillas.size - 1
+        final = carillas.size 
         
-        carillas.each_with_index  {|carilla, i|
+        carillas.each.with_index(1)  {|carilla, i|
           if ((i.even?) && (i == final))
-            sumario.generar_cuerpo_anverso_final(carilla)
-          elsif ((i.even?) && !(i == final))
-            sumario.generar_cuerpo_anverso(carilla)
-          elsif ((i.odd?) && (i == final))
             sumario.generar_cuerpo_reverso_final(carilla)
-          else #((i.odd) && !(i == final))
+          elsif ((i.even?) && !(i == final))
             sumario.generar_cuerpo_reverso(carilla)
+          elsif ((i.odd?) && (i == final))
+            sumario.generar_cuerpo_anverso_final(carilla)
+          else #((i.odd) && !(i == final))
+            sumario.generar_cuerpo_anverso(carilla)
           end
         }
         
@@ -50,7 +50,7 @@ class Diligencia
         
                 
         cuerpo.split.inject('') {|sub_cuerpo, palabra|
-                                         if sumario_pdf.width_of(sub_cuerpo + ' ' + palabra, :align => :justify, :inline_format => true, :leading => 5) > (carillas.size > 1 ? ancho_max : ancho_max_con_titulo)
+                                         if sumario_pdf.width_of(sub_cuerpo + ' ' + palabra, :align => :justify, :inline_format => true, :leading => INTERLINEADO) > (carillas.size > 1 ? ancho_max : ancho_max_con_titulo)
                                         carillas << palabra
                                         sub_cuerpo = palabra                                                                                
                                         else

@@ -74,7 +74,7 @@ class Sumario
         
         sumario_pdf.bounding_box(Origen, :width => Ancho_Pagina , :height => Alto_Pagina) do
             
-            sumario_pdf.text(cuerpo, :align => :justify, :inline_format => true, :leading => 5)
+            sumario_pdf.text(cuerpo, :align => :justify, :inline_format => true, :leading => INTERLINEADO)
 
         end
         
@@ -88,7 +88,7 @@ class Sumario
         
         sumario_pdf.bounding_box(Origen, :width => Ancho_Pagina , :height => Alto_Pagina) do
             
-            sumario_pdf.text(cuerpo, :align => :justify, :inline_format => true, :leading => 5)
+            sumario_pdf.text(cuerpo, :align => :justify, :inline_format => true, :leading => INTERLINEADO)
             
             #generar_firmas_constancia(contexto.instructor, contexto.secretario)
 
@@ -106,7 +106,7 @@ class Sumario
         
         sumario_pdf.bounding_box(Origen_Reverso, :width => Ancho_Pagina , :height => Alto_Pagina) do
             
-            sumario_pdf.text(cuerpo, :align => :justify, :inline_format => true, :leading => 5)
+            sumario_pdf.text(cuerpo, :align => :justify, :inline_format => true, :leading => INTERLINEADO)
             
 
         end
@@ -119,7 +119,7 @@ class Sumario
         
         sumario_pdf.bounding_box(Origen_Reverso, :width => Ancho_Pagina , :height => Alto_Pagina) do
             
-            sumario_pdf.text(cuerpo, :align => :justify, :inline_format => true, :leading => 5)
+            sumario_pdf.text(cuerpo, :align => :justify, :inline_format => true, :leading => INTERLINEADO)
             
             #generar_firmas_constancia(contexto.instructor, contexto.secretario)
             

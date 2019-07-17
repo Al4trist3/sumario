@@ -20,6 +20,8 @@ module Constantes
         top_margin: 113.3858268,
         bottom_margin: 70.866141732
         }
+
+    INTERLINEADO = 5
     
     LEGAL = [612, 1008]
     Ancho_Pagina = LEGAL[0] - (Margenes_Policiales[:right_margin] + Margenes_Policiales[:left_margin])
