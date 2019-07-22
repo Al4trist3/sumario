@@ -21,7 +21,7 @@ module Constantes
         bottom_margin: 70.866141732
         }
 
-    INTERLINEADO = 5
+    INTERLINEADO = 10 
     
     LEGAL = [612, 1008]
     Ancho_Pagina = LEGAL[0] - (Margenes_Policiales[:right_margin] + Margenes_Policiales[:left_margin])
@@ -29,6 +29,7 @@ module Constantes
     
     Origen = [Margenes_Policiales[:left_margin], LEGAL[1] - Margenes_Policiales[:top_margin]]
     Origen_Reverso = [Margenes_Policiales[:right_margin], LEGAL[1] - Margenes_Policiales[:top_margin]]
+    Final_Reverso = [LEGAL[0] - Margenes_Policiales[:left_margin],  Margenes_Policiales[:bottom_margin]]
     Origen_Reverso_Foja_Siguiente = [Margenes_Policiales[:right_margin], LEGAL[1]/2]
     
     DIM_MEDALLA = [102,153]
@@ -36,6 +37,10 @@ module Constantes
     DIM_MEDALLA_VER = [153,102]
 
     DIM_FOLIADOR = [50,50]
+
+    ORIGEN_FOLIADOR = [550,995]
+
+    ORIGEN_MEDALLA_IMPAR = [10,930]
 
     ORIGEN_QA_VER_LEGAL = [LEGAL[0] - 80 , (LEGAL[1]/2) - 150]
 

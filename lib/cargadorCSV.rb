@@ -1,6 +1,6 @@
 require 'date'
 require 'csv'
-require_relative 'causa'
+require_relative 'sumario'
 require_relative 'personal'
 
 class CargadorCSV
@@ -26,7 +26,7 @@ class CargadorCSV
     
     def subir_fila_sumario(fila)
         args = generar_args_fila_sumario fila
-        Causa.new(args)
+        Sumario.new(args)
     end
     
     

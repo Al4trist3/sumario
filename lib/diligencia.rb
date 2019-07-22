@@ -12,7 +12,7 @@ class Diligencia
         
                
         carillas = dividir_cuerpo_en_carillas(texto_con_formato)
-        
+
         carillas[0] = titulo_con_formato.concat(carillas[0])
         
         
@@ -37,6 +37,13 @@ class Diligencia
         
        
     end
+
+    def ancho_max
+
+        14980
+
+    end
+
     
     
     
@@ -87,15 +94,10 @@ class Constancia < Diligencia
         
     end
     
-    def ancho_max
-        
-        20221.847999999998
-        
-    end
     
     def ancho_max_con_titulo
         
-        19351
+        14160 
         
     end
     
@@ -125,15 +127,10 @@ class F8 < Diligencia
         
     end
     
-    def ancho_max
-        
-        20221.847999999998
-        
-    end
     
     def ancho_max_con_titulo
         
-        18120
+        13700
         
     end
     

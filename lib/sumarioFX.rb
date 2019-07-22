@@ -1,6 +1,6 @@
 require 'jrubyfx'
 require 'date'
-require_relative 'sumario'
+require_relative 'sumarioPDF'
 require_relative 'cargadorCSV'
 require_relative 'constantes'
 require_relative 'contexto'
@@ -190,6 +190,15 @@ class DiligenciasFXControlador
 
 
   end
+
+  def generar_sprte_dig
+
+     deshabilitar
+     sumario_pdf.generar_soporte_digital(@campo_descripcion_sprte_dig.text.upcase)
+     habilitar
+
+  end
+
 
   def seleccionar_doc_ext
 

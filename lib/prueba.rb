@@ -1,7 +1,7 @@
 require_relative 'contexto'
-require_relative 'causa'
-require_relative 'personal'
 require_relative 'sumario'
+require_relative 'personal'
+require_relative 'sumarioPDF'
 require 'date'
 
 
